@@ -1,9 +1,12 @@
+import React from 'react'
+import PostForm from "./Components/PostForm";
+
 function App() {
   return (
     <div className="container pt-3">
       <div className="row">
         <div className="col">
-            FORM
+            <PostForm></PostForm>
         </div>
       </div>
         <div className="row">
