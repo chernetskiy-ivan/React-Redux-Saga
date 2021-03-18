@@ -1,5 +1,7 @@
 import React from 'react'
 import PostForm from "./Components/PostForm";
+import Posts from "./Components/Posts";
+import FetchedPosts from "./Components/FetchedPosts";
 
 function App() {
   return (
@@ -11,10 +13,10 @@ function App() {
       </div>
         <div className="row">
             <div className="col">
-                POSTS
+                <Posts/>
             </div>
             <div className="col">
-                FETCH POSTS
+                <FetchedPosts/>
             </div>
         </div>
     </div>
