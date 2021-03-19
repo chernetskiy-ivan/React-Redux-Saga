@@ -4,11 +4,23 @@ export default class PostForm extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = {}
+        this.state = {
+            title: ''
+        }
     }
 
     submitHandler = event => {
         event.preventDefault()
+
+        console.log(this.state.title)
+    }
+
+    changeInputHandler = event => {
+        event.persist()
+        this.setState(prev => ({...prev, ...{
+                [event.target.name]: event.target.value
+            }})
+        )
     }
 
     render() {
@@ -16,7 +28,14 @@ export default class PostForm extends React.Component {
             <form onSubmit={this.submitHandler}>
                 <div className="mb-3">
                     <label htmlFor='title'>Заголовок поста</label>
-                    <input type='text' className='form-control' id='title' />
+                    <input
+                        type='text'
+                        className='form-control'
+                        id='title'
+                        value={this.state.title}
+                        name='title'
+                        onChange={this.changeInputHandler}
+                    />
                 </div>
                 <button className='btn btn-success' type='submit'>Создать</button>
             </form>
