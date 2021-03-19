@@ -19,6 +19,8 @@ export default class PostForm extends React.Component {
         }
 
         console.log(newPost)
+        //чистим input
+        this.setState({title: ''})
     }
 
     changeInputHandler = event => {
