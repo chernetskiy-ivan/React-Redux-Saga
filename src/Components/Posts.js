@@ -1,9 +1,6 @@
 import React from 'react'
+import Post from './Post'
 
-export default function Posts() {
-    return (
-        <div>
-            <h1>Posts</h1>
-        </div>
-    )
+export default function Posts({posts}) {
+    return posts.map(post => <Post post={post} key={post} />)
 }
