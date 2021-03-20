@@ -16,6 +16,11 @@ class PostForm extends React.Component {
 
         const {title} = this.state
 
+        //Метод trim() удаляет пробельные символы с начала и конца строки
+        if(!title.trim()) {
+            return
+        }
+
         const newPost = {
             title, id: Date.now().toString()
         }
