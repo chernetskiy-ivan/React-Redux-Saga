@@ -3,8 +3,9 @@ import {render} from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createStore} from 'redux'
+import {rootReducer} from "./redux/rootReducers";
 
-const store = createStore()
+const store = createStore(rootReducer)
 
 render(<App />, document.getElementById('root'));
 
