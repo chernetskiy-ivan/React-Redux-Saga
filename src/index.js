@@ -1,13 +1,15 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux'
-import {compose, createStore} from 'redux'
+import {compose, createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {rootReducer} from "./redux/rootReducers";
 
-const store = createStore(rootReducer, compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+const store = createStore(rootReducer, compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
 //Компонент Provider - компонент высшего порядка
 //Не создает шаблон, а добавляет функциональность к компоненту App
