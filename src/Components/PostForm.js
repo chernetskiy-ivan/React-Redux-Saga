@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {createPost} from '../redux/actions'
+import {createPost, showAlert} from '../redux/actions'
 
 class PostForm extends React.Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class PostForm extends React.Component {
 
         //Метод trim() удаляет пробельные символы с начала и конца строки
         if(!title.trim()) {
-            return
+            return this.props.showAlert('Название поста не может быть пустым!')
         }
 
         const newPost = {
@@ -60,7 +60,8 @@ class PostForm extends React.Component {
 }
 
 const mapDispatchToProps = {
-    createPost: createPost
+    createPost: createPost,
+    showAlert: showAlert()
 }
 
 export default connect(null, mapDispatchToProps)(PostForm)
