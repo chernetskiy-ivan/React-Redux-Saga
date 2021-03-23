@@ -6,9 +6,10 @@ import thunk from 'redux-thunk'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {rootReducer} from "./redux/rootReducers";
+import {forbiddenWordsMiddleware} from "./redux/middleware";
 
 const store = createStore(rootReducer, compose(
-    applyMiddleware(thunk),
+    applyMiddleware(thunk, forbiddenWordsMiddleware),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
 //Компонент Provider - компонент высшего порядка
