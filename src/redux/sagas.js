@@ -1,6 +1,6 @@
 import {takeEvery, put, call} from 'redux-saga/effects'
 import {FETCH_POSTS, REQUEST_POSTS} from './types'
-import {hideLoader, showLoader} from "./actions";
+import {hideLoader, showAlert, showLoader} from "./actions";
 
 export function* sagaWatcher() {
     //функция обрабатывает action поступающий в store
@@ -11,12 +11,18 @@ export function* sagaWatcher() {
 }
 
 function* sagaWorker() {
-    //метод put позволяет дисптчить некоторые события в store
-    yield put(showLoader())
-    //payload будет совпадать с response.json()
-    const payload = yield call(fetchPosts)
-    yield put({type: FETCH_POSTS, payload})
-    yield put(hideLoader())
+    try{
+        //метод put позволяет дисптчить некоторые события в store
+        yield put(showLoader())
+        //payload будет совпадать с response.json()
+        const payload = yield call(fetchPosts)
+        yield put({type: FETCH_POSTS, payload})
+        yield put(hideLoader())
+    } catch(e) {
+        yield put(showAlert('Что-то пошло не так'))
+        yield put(hideLoader())
+    }
+
 }
 
 async function fetchPosts() {
